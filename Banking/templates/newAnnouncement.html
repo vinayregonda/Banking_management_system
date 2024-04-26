@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .X1{
+        border:  1px solid black;
+    }
+    .X2{
+        background-color: rgb(235, 234, 234);
+    }
+</style>
+<div class="col col-md-9 mt-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="X1">
+            <div class="card">
+                <h3>Create New Announcement</h3>
+                <hr>
+                <br>
+                <div class="col col-md-8">
+                    <label for="">Title</label>
+                    <input type="text" class="form-control" autocomplete="off" required name="TITLE">
+                </div>
+                <div class="col col-md-12">
+                    <label for="">Announcement</label>
+                    <input type="text" class="form-control" autocomplete="off" readonlym name="BODY">
+                </div>
+            </div>
+            <br>
+            <div class="col col-md-12 X2">
+                <input type="submit" value="Save" class="btn btn-primary mt-2 m-2">
+                <input type="reset" value="Cancel" class="btn btn-outline-secondary mt-2 m-2">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

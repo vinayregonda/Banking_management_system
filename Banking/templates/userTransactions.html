@@ -1,0 +1,38 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+<style>
+    .container{
+        background-color: rgb(241, 239, 237)
+    }
+</style>
+
+    <div class="col col-md-12" style="margin-top: 50px;">
+        <div class="container">
+            <h2>Transactions</h2>
+            <hr>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Account Id</th>
+                    <th>Date Created</th>
+                    <th>Transaction</th>
+                    <th>Amount</th>
+                    
+                </tr>
+                {% for i in usertrans %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.account_id}}</td>
+                    <td>{{i.created_at}}</td>
+                    <td>{{i.Transaction_type}}</td>
+                    <td>{{i.Amount}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+
+
+{% endblock content %}

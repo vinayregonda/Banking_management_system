@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col col-md-8 card m-4">
+    <h3>Create New Account</h3>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="col col-md-6">
+            <label for="">Account Number</label>
+            <input type="text" name="AN" class="form-control">
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col col-md-4">
+                <label for="">First Name</label>
+                <input type="text" name="FN" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="col col-md-4">
+                <label for="">Middle Name</label>
+                <input type="text" name="MN" class="form-control" autocomplete="off">
+            </div>
+            <div class="col col-md-4">
+                <label for="">Last Name</label>
+                <input type="text" name="LN" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col col-md-6">
+                <label for="">Email</label>
+                <input type="email" name="EMAIL" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6">
+                <label for="">Password</label>
+                <input type="password" name="PS" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6">
+                <label for="">PIN</label>
+                <input type="text" name="PIN" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6">
+                <label for="">Begining Balance</label>
+                <input type="number" name="BB" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary mt-5 m-3" value="Save">
+            <input type="reset" class="btn btn-secondary mt-5 m-3" value="Cancel">
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

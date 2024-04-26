@@ -1,0 +1,39 @@
+{% extends 'base2.html' %}
+{% block content %}
+<style>
+    .X2{
+        border: 1px solid black;
+    }
+    .X1{
+        background-color: rgb(241, 239, 237);
+    }
+</style>
+
+<div class="col col-md-12 X2" style="margin-top: 50px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h2>Withdraw</h2>
+            <hr>
+            <div class="col col-md-6">
+                <label for="">Account Number</label>
+                <input type="text" class="form-control" value="{{userWithdarw.accountNumber}}" disabled autocomplete="off" required>
+            </div>  
+            <h1><b>Current Balance: {{userWithdarw.beginingBalance}}</b></h1>
+            <hr>
+            <div class="col col-md-6">
+                <label for="Deposit Amount">Withdraw Amount</label>
+                <input type="number" class="form-control" name="with" autocomplete="off" required>
+            </div>  
+            <br>
+            
+        </div>
+        <div class="X1">
+            <input type="submit" class="btn btn-primary mt-2 m-2" value="Submit">
+            <input type="reset" class="btn btn-outline-secondary mt-2 m-2"  value="Cancel">
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

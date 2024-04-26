@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col col-md-8">
+    <div class="container">
+        <form action=""  method="post">
+            {% csrf_token %}
+            <div class="col col-md-10">
+                <label for="">Title</label>
+                <input type="text" name="Title" class="form-control" autocomplete="off" value="{{updateAnnouncement.title}}">
+            </div>
+            <div class="col col-md-10">
+                <label for="">Body</label>
+                <input type="text" name="Body" class="form-control" autocomplete="off" value="{{updateAnnouncement.body}}">
+            </div>
+            <div class="col col-md-4">
+                <input type="submit" class="btn btn-primary" value="Update">
+                <input type="reser" class="btn btn-outline-secondary" value="Cancel">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

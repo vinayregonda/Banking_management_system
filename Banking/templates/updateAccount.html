@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col col-md-9 mt-4">
+    <h1 align="center">Update Account</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="card" style="background-color: rgb(241, 239, 237);">
+            <table>
+                <div class="col col-md-6">
+                    <label for=""><b>Account Number</b></label>
+                    <input type="text" class="form-control mt-2" autocomplete="off" disabled>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col col-md-4">
+                        <label for=""><b>First Name</b></label>
+                        <input type="text" class="form-control" name="FirstName" value="{{updateAccount.firstName}}" autocomplete="off">
+                    </div>
+                    <div class="col col-md-4">
+                        <label for=""><b>Middle Name</b></label>
+                        <input type="text" class="form-control" name="MiddleName" value="{{updateAccount.middleName}}" autocomplete="off">
+                    </div>
+                    <div class="col col-md-4">
+                        <label for=""><b>Last Name</b></label>
+                        <input type="text" class="form-control" name="LastName" value="{{updateAccount.lastName}}" autocomplete="off">
+                    </div>
+                </div>
+                <hr>
+                <div class="col col-md-6">
+                    <label for=""><b>Email</b></label>
+                    <input type="email" class="form-control" name="E_MAIL" value="{{updateAccount.Email}}" autocomplete="off">
+                </div>
+                <div class="col col-md-6">
+                    <label for=""><b>PIN</b></label>
+                    <input type="text" class="form-control" name="PIN" value="{{updateAccount.Pin}}" autocomplete="off">
+                </div>
+                <div class="col col-md-6">
+                    <label for=""><b>Password</b></label>
+                    <input type="password" class="form-control" autocomplete="off" disabled>
+                    <span class="input-group justify-content-end"></span>
+                </div>
+            </table>
+            <br>
+            <br>
+            <div class="col col-md-2 m-3">
+                <input type="submit" value="Save" class="btn btn-primary">
+                <input type="reset" value="Cancel" class="btn btn-secondary m-2">
+            </div>
+            <div class="col col-md-12 offset-md-11 mt-3 ">
+                <a href="" class="btn btn-warning">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="col col-md-9 card" style="margin-left: 10px; margin-top: 10px;">  
+        <div class="row">
+            <h3>List of Accounts
+                <!-- <input type="submit" class="btn btn-primary" style="margin-left: 660px;" value="Create New"> -->
+                <a href="{% url 'newAccount' %}" class="btn btn-primary" style="margin-left: 660px;">Create New</a>
+            </h3>
+        </div>
+        <hr>
+        <!-- <div class="row">
+            <span>
+                Show &nbsp;<input type="number" style="width: 30px;" >&nbsp;Entries
+                <span style="margin-left: 55%;">Search</span> &nbsp; <input type="text" style="width: 180px;">
+            
+            </span>
+
+        </div> -->
+        <br>    
+        <div class="container">
+            <div class="col col-md-12">
+                <table class="table table-borderd table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Account</th>
+                        <th>Name</th>
+                        <th>Current Balance</th>
+                        <th>Date Added</th>
+                        <th>Date Last Update</th>
+                        <th>Action</th> 
+                    </tr>
+                    {% for i in manageAccount %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.accountNumber}}</td>
+                        <td>{{i.firstName}} {{i.middleName}} {{i.lastName}}</td>
+                        <td>{{i.beginingBalance}}</td>
+                        <td>{{i.created_at}}</td>
+                        <td>{{i.last_update}}</td>
+                        <td>
+                          
+                          <a href="" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Active</a>
+                          <ul class="dropdown-menu form-group">
+                            <div class="form-group">
+                              <a href="{% url 'updateAccount' i.pk %}" class="btn btn-primary" >Edit</a>
+                              <a href="{% url 'deleteAccount' i.pk %}" class="btn btn-danger">Delete</a>
+                            </div>
+                          </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+        <div class="row m-5">
+          <div class="col col-md-12 m-3">
+            {% if manageAccount.has_other_pages %}
+              <ul class="pagination">
+                {% if manageAccount.has_previous %}
+                  <li class="page-item">
+                    <a href="?page={{ manageAccount.previous_page_number }}"><span class="page-link">Previous</span></a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a href="?page={{ manageAccount.paginator.number_pages }}" class="page-link">Previous</a>
+                  </li>
+                {% endif %}
+
+                <!-- Number Pagination -->
+
+                {% for i in manageAccount.paginator.page_range %}
+
+                  {% if manageAccount.number == i %}
+                    <li class="page-item active">
+                      <a href="?page={{ i }}" class="page-link">{{i}}</a>
+                    </li>
+                {% else %}
+                <li class="page-item">
+                  <a href="?page={{ i }}" class="page-link">{{i}}</a>
+                </li>
+                  {% endif %}
+
+
+                {% endfor %}
+
+
+                <!-- Next Button starts -->
+                {% if manageAccount.has_next %}
+                  <li class="page-item">
+                    <a href="?page={{ manageAccount.next_page_number }}"><span class="page-link">Next</span></a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a href="?page={{ manageAccount.paginator.number_pages }}" class="page-link">Next</a>
+                  </li>
+                {% endif %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

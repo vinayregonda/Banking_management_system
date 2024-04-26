@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col col-md-9">
+        <div class="col col-md-12 card" style="background-color: rgb(244, 242, 238);">
+            <div class="row">
+                <h3>List of Announcements
+                    <!-- <input type="submit" class="btn btn-primary" style="margin-left: 560px; height: 40px;" value="Create New"> -->
+                    <a href="{% url 'newAnnouncement' %}" class="btn btn-primary" style="margin-left: 560px; height: 40px;">Create New</a>
+                    <hr>
+                </h3>
+                
+            </div>
+            <!-- <div class="row">
+                <span>
+                    Show &nbsp;<input type="number" style="width: 30px;" >&nbsp;Entries
+                    <span style="margin-left: 55%;">Search</span> &nbsp; <input type="text" style="width: 180px;">
+                </span>
+            </div> -->
+            <br>
+            <div class="container">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Date Craeted</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>Date Last Update</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for i in announcement %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.created_at}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.body}}</td>
+                        <td>{{i.last_date}}</td>
+                        <td>
+                            <a href="" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Active</a>
+                            <ul class="dropdown-menu form-group">
+                                <div class="form-group">
+                                    <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{forloop.counter}}">Update</button> -->
+                                    <a href="{% url 'updateAnnouncement' i.pk %}" class="btn btn-warning">Update</a>
+                                    <a href="{% url 'deleteAnnouncement' i.pk %}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    
+
+        <div class="row m-5">
+            <div class="col col-md-12 m-3">
+                {% if announcement.has_other_pages %}
+                <ul class="pagination">
+                    {% if announcement.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{ announcement.previous_page_number }}"><span class="page-link">Previous</span></a>
+                    </li>
+                    {% else %}   
+                    <li class="page-item">
+                        <a href="?page={{ announcement.paginator.number_pages }}" class="page-link">Previous</a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in announcement.paginator.page_range %}
+
+                        {% if announcement.number == i %}
+                            <li class="page-item active">
+                                <a href="?page={{ i }}" class="page-link">{{i}}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a href="?page={{ i }}" class="page-link">{{i}}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if announcement.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{ announcement.next_page_number }}"><span class="page-link">Next</span></a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a href="?page={{ announcement.paginator.number_pages }}" class="page-link">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

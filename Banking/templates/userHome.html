@@ -1,0 +1,22 @@
+{% extends 'base2.html' %}
+
+
+{% block content %}
+
+    <div class="col col-md-12 " style="margin-top: 50px;">
+        <h1>Welcome to Online Banking System</h1>
+        <hr>
+        <div class="container">
+            <div class="col col-md-12 card">
+                <div class="card" style="height: 100px;">
+                    <tr>
+                        <td class="m-3"><b>Account Number :<span>{{userHome.accountNumber}}</span></b></td>
+                        <td><b>Current Balance: <span>{{userHome.beginingBalance}}</span></b></td>
+                    </tr>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+{%  endblock %}
